@@ -76,4 +76,19 @@ extension Int     : NumberConvertible {}
 extension Float   : NumberConvertible {}
 
 
+infix operator - { associativity left precedence 140 }
+public func -<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
+    return lhs.f - rhs.f;
+}
 
+infix operator + { associativity left precedence 140 }
+public func +<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
+    return lhs.f - rhs.f;
+}
+
+
+//func +(lhs: CGFloat, rhs: CGFloat) -> CGFloat
+//
+//func *(lhs: CGFloat, rhs: CGFloat) -> CGFloat
+//
+//func %(lhs: CGFloat, rhs: CGFloat) -> CGFloat
