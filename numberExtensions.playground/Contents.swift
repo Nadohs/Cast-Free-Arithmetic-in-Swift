@@ -12,14 +12,7 @@ import CoreGraphics
 let znum:Int = 5
 let znum1:Double = 7.0;
 
-
-public func -<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
-    return lhs.f - rhs.f;
-}
-
-public func +<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
-    return lhs.f - rhs.f;
-}
-
-
 let znum2:CGFloat = znum + znum1
+
+
+

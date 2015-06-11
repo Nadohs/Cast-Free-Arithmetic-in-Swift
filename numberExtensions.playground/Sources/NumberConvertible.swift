@@ -76,19 +76,88 @@ extension Int     : NumberConvertible {}
 extension Float   : NumberConvertible {}
 
 
-infix operator - { associativity left precedence 140 }
+
+///CGFloat
+
 public func -<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
-    return lhs.f - rhs.f;
+    return lhs.c - rhs.c;
 }
 
-infix operator + { associativity left precedence 140 }
 public func +<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
-    return lhs.f - rhs.f;
+    return lhs.c + rhs.c;
+}
+public func *<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
+    return lhs.c * rhs.c;
+}
+
+public func /<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
+    return lhs.c * rhs.c;
+}
+
+public func %<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> CGFloat{
+    return lhs.c % rhs.c;
 }
 
 
-//func +(lhs: CGFloat, rhs: CGFloat) -> CGFloat
-//
-//func *(lhs: CGFloat, rhs: CGFloat) -> CGFloat
-//
-//func %(lhs: CGFloat, rhs: CGFloat) -> CGFloat
+///Float
+
+public func -<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Float{
+    return lhs.f - rhs.f;
+}
+
+public func +<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Float{
+    return lhs.f + rhs.f;
+}
+public func *<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Float{
+    return lhs.f * rhs.f;
+}
+
+public func /<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Float{
+    return lhs.f * rhs.f;
+}
+
+public func %<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Float{
+    return lhs.f % rhs.f;
+}
+
+///Double
+
+public func -<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Double{
+    return lhs.d - rhs.d;
+}
+
+public func +<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Double{
+    return lhs.d + rhs.d;
+}
+public func *<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Double{
+    return lhs.d * rhs.d;
+}
+
+public func /<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Double{
+    return lhs.d * rhs.d;
+}
+
+public func %<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Double{
+    return lhs.d % rhs.d;
+}
+
+///Int
+
+public func -<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Int{
+    return lhs.i - rhs.c;
+}
+
+public func +<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Int{
+    return lhs.i + rhs.i;
+}
+public func *<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Int{
+    return lhs.i * rhs.i;
+}
+
+public func /<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Int{
+    return lhs.i * rhs.i;
+}
+
+public func %<T:NumberConvertible,U:NumberConvertible>(lhs: T, rhs: U) -> Int{
+    return lhs.i % rhs.i;
+}
