@@ -12,7 +12,8 @@ import CoreGraphics
 let znum:Int = 5
 let znum1:Double = 7.0;
 
-let znum2:CGFloat = znum + znum1
+let znum2:CGFloat = znum + znum1 + znum
+
 
 
 
