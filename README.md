@@ -1,7 +1,7 @@
 # NumberConvertible
 Swift 2 easy number conversions optimized using protocol extensions
 
-Thanks @matthewcheok for the help with this!
+Thanks @matthewcheok for helping with this!
 
 Also added overloaded operators to add numbers of multiple types without casting
 
