@@ -82,7 +82,32 @@ extension Float   : NumberConvertible {}
 public func + <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
     let v: PreferredType = lhs.convert()
     let w: PreferredType = rhs.convert()
-    
-    print("v \(v) + w \(w) = \(v+w)")
     return v+w
 }
+
+public func - <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v-w
+}
+
+public func / <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v/w
+}
+
+public func * <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v*w
+}
+
+public func % <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v%w
+}
+
+
+
