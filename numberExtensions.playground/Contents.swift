@@ -2,11 +2,18 @@
 
 import CoreGraphics
 
- var num:Double   = 12;
- var num2:Float   = num.f;
- var num3:CGFloat = num.c;
- var num4:Int     = num.i;
- var num5:Double  = num2.d;
+ let num:Double   = 12;
+ let num2:Float   = num.f;
+ let num3:CGFloat = num.c;
+ let num4:Int     = num.i;
+ let num5:Double  = num2.d;
+
+
+let znum:Int = 5
+let znum1:Double = 7.0;
+
+let znum2:CGFloat = znum + znum1 + znum
+
 
 
 
