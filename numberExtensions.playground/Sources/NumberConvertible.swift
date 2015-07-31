@@ -73,10 +73,18 @@ extension NumberConvertible {
 }
 
 
+
+
+extension Dictionary{
+    
+}
+
+
 extension CGFloat : NumberConvertible {}
 extension Double  : NumberConvertible {}
 extension Int     : NumberConvertible {}
 extension Float   : NumberConvertible {}
+
 
 
 public func + <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
@@ -108,6 +116,32 @@ public func % <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Pref
     let w: PreferredType = rhs.convert()
     return v%w
 }
+
+
+
+//
+//infix operator := {}
+//
+
+infix operator ?= { associativity right precedence 90 }
+
+//func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, V> {
+//    
+//    for (k, v) in right {
+//        left.updateValue(v, forKey: k)
+//    }
+//    return left
+//}
+
+//UnsafeMutablePointer
+
+func ?= <T:NumberConvertible, U:NumberConvertible> (inout lhs: T, rhs: U) -> T{
+    lhs = rhs.convert()
+    return lhs;
+}
+
+//func +=<T>(inout lhs: UnsafeMutablePointer<T>, rhs: Int)
+//func +=<T>(inout lhs: UnsafePointer<T>, rhs: Int)
 
 
 

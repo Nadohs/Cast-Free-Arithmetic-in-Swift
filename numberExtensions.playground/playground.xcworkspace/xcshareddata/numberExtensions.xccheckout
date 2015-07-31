@@ -7,18 +7,18 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3F1AFFD7-605E-4034-8320-34F9D7309CE7</string>
 	<key>IDESourceControlProjectName</key>
-	<string>numberExtensions</string>
+	<string>playground</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>57ACB004D569EF2EB0E8C6E8E516B9FD79EF3C63</key>
 		<string>https://github.com/Nadohs/NumberConvertible.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>numberExtensions.playground</string>
+	<string>numberExtensions.playground/playground.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>57ACB004D569EF2EB0E8C6E8E516B9FD79EF3C63</key>
-		<string>..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Nadohs/NumberConvertible.git</string>

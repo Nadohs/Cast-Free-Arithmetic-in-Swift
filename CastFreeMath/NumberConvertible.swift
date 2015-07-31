@@ -1,9 +1,9 @@
-import Foundation
 
 
-import CoreGraphics //For MAC
+import CoreGraphics //For MAC and iOS usage
 
-public typealias PreferredType = CGFloat
+
+public typealias PreferredType = Double
 
 
 public protocol NumberConvertible{
@@ -11,27 +11,30 @@ public protocol NumberConvertible{
     init(_ value: Float)
     init(_ value: Double)
     init(_ value: CGFloat)
-    
-    
-    var c:CGFloat{ get }
-    var f:Float{ get }
-    var d:Double{ get }
-    var i:Int { get }
+    init(_ value: UInt8)
+    init(_ value: Int8)
+    init(_ value: UInt16)
+    init(_ value: Int16)
+    init(_ value: UInt32)
+    init(_ value: Int32)
+    init(_ value: UInt64)
+    init(_ value: Int64)
+    init(_ value: UInt)
 }
+
+
 
 
 extension CGFloat{
-   public  init(_ value: CGFloat){
+    public  init(_ value: CGFloat){
         self.init(Double(value))
     }
-    
 }
-
 
 
 
 extension NumberConvertible {
-    
+ 
     private func convert<T: NumberConvertible>() -> T {
         switch self {
         case let x as CGFloat:
@@ -43,7 +46,7 @@ extension NumberConvertible {
         case let x as Double:
             return T(x)
         default:
-            print("bad")
+            assert(false, "NumberConvertible convert cast failed!")
             return T(0)
         }
     }
@@ -53,7 +56,6 @@ extension NumberConvertible {
         get{
             return convert()
         }
-        
     }
     public var f:Float{
         get{
@@ -77,6 +79,16 @@ extension CGFloat : NumberConvertible {}
 extension Double  : NumberConvertible {}
 extension Int     : NumberConvertible {}
 extension Float   : NumberConvertible {}
+extension UInt8   : NumberConvertible {}
+extension Int8    : NumberConvertible {}
+extension UInt16  : NumberConvertible {}
+extension Int16   : NumberConvertible {}
+extension UInt32  : NumberConvertible {}
+extension Int32   : NumberConvertible {}
+extension UInt64  : NumberConvertible {}
+extension Int64   : NumberConvertible {}
+extension UInt    : NumberConvertible {}
+
 
 
 public func + <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
@@ -109,5 +121,19 @@ public func % <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Pref
     return v%w
 }
 
+
+
+
+infix operator ?= { associativity right precedence  90 assignment} // 1
+
+
+
+
+func ?= <T:NumberConvertible, U:NumberConvertible>(var lhs: T, rhs: U) -> T{
+
+    lhs = rhs.convert()
+    let x:T = rhs.convert()
+    return x;
+}
 
 
