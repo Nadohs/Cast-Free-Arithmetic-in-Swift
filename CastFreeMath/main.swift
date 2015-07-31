@@ -36,8 +36,31 @@ res ?= qz + 5.i + 55.c
 
 //infix operator ::: { associativity left precedence 140 }
 
+if val1 == val4 {
+    print("==\(val1).\(val1.dynamicType)")
+}else {
+    print("!=\(val1).\(val1.dynamicType)")
+}
 
-  
+if val3 != val4{
+    print("!=\(val3).\(val3.dynamicType)")
+}
+
+if val3 >= val4{
+    print(">=\(val3).\(val3.dynamicType)")
+}
+
+if val3 > val4{
+    print(">\(val3).\(val3.dynamicType)")
+}
+
+if val3 <= val4{
+    print("<=\(val3).\(val3.dynamicType)")
+}
+
+if val3 < val4{
+    print("<\(val3).\(val3.dynamicType)")
+}
 
 //let total = CGFloat(val1) + CGFloat(val2) * CGFloat(val3)
 //let total2:CGFloat = val1 + val2 * val3

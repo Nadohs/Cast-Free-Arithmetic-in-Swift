@@ -6,7 +6,7 @@ import CoreGraphics //For MAC and iOS usage
 public typealias PreferredType = Double
 
 
-public protocol NumberConvertible{
+public protocol NumberConvertible:Equatable{
     init(_ value: Int)
     init(_ value: Float)
     init(_ value: Double)
@@ -44,6 +44,24 @@ extension NumberConvertible {
         case let x as Int:
             return T(x)
         case let x as Double:
+            return T(x)
+        case let x as UInt8:
+            return T(x)
+        case let x as Int8:
+            return T(x)
+        case let x as UInt16:
+            return T(x)
+        case let x as Int16:
+            return T(x)
+        case let x as UInt32:
+            return T(x)
+        case let x as Int32:
+            return T(x)
+        case let x as UInt64:
+            return T(x)
+        case let x as Int64:
+            return T(x)
+        case let x as UInt:
             return T(x)
         default:
             assert(false, "NumberConvertible convert cast failed!")
@@ -123,10 +141,7 @@ public func % <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Pref
 
 
 
-
 infix operator ?= { associativity right precedence  90 assignment} // 1
-
-
 
 
 func ?= <T:NumberConvertible, U:NumberConvertible>(var lhs: T, rhs: U) -> T{
@@ -135,5 +150,46 @@ func ?= <T:NumberConvertible, U:NumberConvertible>(var lhs: T, rhs: U) -> T{
     let x:T = rhs.convert()
     return x;
 }
+
+
+
+//MARK:Equatable extension
+
+
+
+public func == <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Bool{
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v == w;
+}
+
+public func != <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Bool{
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v != w;
+}
+
+public func >= <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Bool{
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v >= w;
+}
+public func > <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Bool{
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v > w;
+}
+public func <= <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Bool{
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v <= w;
+}
+public func < <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Bool{
+    let v: PreferredType = lhs.convert()
+    let w: PreferredType = rhs.convert()
+    return v < w;
+}
+
+
 
 
