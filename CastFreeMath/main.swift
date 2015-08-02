@@ -10,10 +10,10 @@
 import CoreGraphics
 
 let num:Double   = 12;
-let num2:Float   = num.f;
-let num3:CGFloat = num.c;
-let num4:Int     = num.i;
-let num5:Double  = num2.d;
+let num2:Float   = 12//num.f;
+let num3:CGFloat = 12//num.c;
+let num4:Int     = 12//num.i;
+let num5:Double  = 12//num2.d;
 
 
 let znum:Int = 5
@@ -30,7 +30,7 @@ let qz = val4 + val2 + val1 + val3
 
 var res:Int32 = 44;
 
-res ?= qz + 5.i + 55.c
+res ?= qz + Int(5) + CGFloat(55)
 
 
 
@@ -76,6 +76,26 @@ type ?= Double(1.1)
 var znum3:CGFloat = 0;
 
 znum3 ?= znum + znum1 * znum + num5
+
+let res3 = Int(1000000) + Double(2.0)
+let res4 = Int(10000000000) + Double(2.0)
+var res55:Int64 = 0
+//res55 = Int64(1000000000000000000) * Int64(1000000000000000000)
+let res555:Int = 0
+if !checkForOverflow(Int(), b: Int(100000) * Int64(100000)){
+    print("will overflow")
+}
+if !checkForOverflow(Int(), b: Int(1000000000000000000) * Int64(1000000000000000000)){
+    print("will overflow")
+}
+
+//res555 ?= Int(100000) * Int64(100000)
+//res555 ?= Int(1000000000000000000) * Int64(1000000000000000000)
+
+res555 ?= Double.infinity
+print(res55)
+print(res555)
+print("res5 type = \(res55.dynamicType)\n1000000000000000000")
 
 print(type)
 
