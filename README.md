@@ -21,18 +21,22 @@ let znum1:Double = 7.0;
 ###Cast-less Arithmetic!
 Default return type for mismatched number types in Double
 ```
-let znum2:Double = znum + znum1 * znum + num5 
+let znum2 = znum + znum1 * znum + num5 
+```
+or
+```
+let znum3:Double = 5.i + 5.5.f * 2.i / 5.5.c 
 
-let znum3:Double = 5.i + 5.5.f * 2.i / 5.5.c
 ```
 Cannot return to type other than Double by simply using = .
 
 ```
 //let znum2:CGFloat = znum + znum1 * znum + num5
 
+```
 
 #Cast-less Arithmetic Assigment to Non-Double
-
+```
 var totalA:Int = 0
 ```
 
