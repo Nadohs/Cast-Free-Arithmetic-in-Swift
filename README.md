@@ -1,4 +1,4 @@
-# Cast-Free Math
+# Cast-Free Math in Swift
 
 **Requires: Swift 2.0+**
 
