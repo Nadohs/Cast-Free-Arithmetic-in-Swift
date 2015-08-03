@@ -23,7 +23,7 @@ Default return type for mismatched number types in Double
 ```
 let znum2:Double = znum + znum1 * znum + num5 
 
-let znum3:Double = Int(5) + Float(5.5) * Int32(2) / CGFloat(5.5)
+let znum3:Double = 5.i + 5.5.f * 2.i / 5.5.c
 ```
 Cannot return to type other than Double by simply using = .
 
