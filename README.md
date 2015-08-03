@@ -32,7 +32,7 @@ Cannot return to type other than Double by simply using = .
 
 ```
 //let znum2:CGFloat = znum + znum1 * znum + num5
-
+//This is not allowed...  :(
 ```
 
 #Cast-less Arithmetic Assigment to Non-Double
