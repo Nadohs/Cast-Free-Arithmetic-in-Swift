@@ -86,14 +86,15 @@ if val3 < val4{
 
 `````
 
-###Overloading
+###Overflow
+If you have any concerns about overflow then you should probably just be casting your types instead.
 
 ```
 var resA:Int   = 0
 var resB:Int64 = 0
 ```
 
-Our arithmetic operations do not have the same level of safety as what's in the standard library.  For instance the following line gives us an overflow compiler time error
+Our arithmetic operations do not have the same level of safety as what's in the standard library.  For instance the following line gives us an overflow compiler time error.
 
 ```
 //resA = Int(1000000000000000000) * Int(1000000000000000000)
@@ -135,7 +136,6 @@ if wouldOverflowResult(Int(), Double.infinity){
 }
 
 ```
-
 
 
 Also want to say thanks to Matt Cheok and the Apple engineers that helped me out with this project during WWDC. 
