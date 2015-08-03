@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>CastFreeMathTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>BDCA0DCF1B6EFFB800F582B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BDD87BC31B2B3C91006C09D1</key>
 		<dict>
 			<key>primary</key>

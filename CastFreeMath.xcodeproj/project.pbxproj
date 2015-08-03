@@ -91,6 +91,9 @@
 		BDD87BBC1B2B3C91006C09D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = OpenSource;
 				TargetAttributes = {
@@ -240,6 +243,7 @@
 				BDD87BCD1B2B3C91006C09D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

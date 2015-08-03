@@ -38,12 +38,6 @@ extension CGFloat{
 
 
 extension NumberConvertible {
-    
-    
-//    private func convert<T: NumberConvertible>() -> T {
-//        let res:T = convertType()
-//        return res;
-//    }
  
     private func convert<T: NumberConvertible>() -> T {
         switch self {
@@ -79,26 +73,26 @@ extension NumberConvertible {
         }
     }
     
-//    public var c:CGFloat{
-//        get{ return convert() }
-//    }
-//    public var f:Float{
-//        get{ return convert() }
-//    }
-//    public var d:Double{
-//        get{ return convert() }
-//    }
-//    public  var i:Int{
-//        get{ return convert() }
-//    }
+    public var c:CGFloat{
+        get{ return convert() }
+    }
+    public var f:Float{
+        get{ return convert() }
+    }
+    public var d:Double{
+        get{ return convert() }
+    }
+    public  var i:Int{
+        get{ return convert() }
+    }
     
 }
 
 
 extension CGFloat : NumberConvertible {}
 extension Double  : NumberConvertible {}
-extension Int     : IntNumberConvertible {}
 extension Float   : NumberConvertible {}
+extension Int     : IntNumberConvertible {}
 extension UInt8   : IntNumberConvertible {}
 extension Int8    : IntNumberConvertible {}
 extension UInt16  : IntNumberConvertible {}
@@ -110,6 +104,8 @@ extension Int64   : IntNumberConvertible {}
 extension UInt    : IntNumberConvertible {}
 
 
+
+//MARK: - Arithmetic overloading -
 
 public func + <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
     let v: PreferredType = lhs.convert()
@@ -142,64 +138,34 @@ public func % <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> Pref
 }
 
 
+//MARK: - Assignment overloading -
 
-infix operator ?= { associativity right precedence  90 assignment} // 1
+
+/// Use `?=` for assignment to already previously defined number types (non-`Double`)
+infix operator ?= { associativity right precedence  90 assignment}
 
 
-func ?= <T:NumberConvertible, U:NumberConvertible>(var lhs: T, rhs: U) -> T{
+func ?= <T:NumberConvertible, U:NumberConvertible>(inout lhs: T, rhs: U){
+    lhs = rhs.convert()
+}
 
+//For values not previously assigned use the `^^` operator
+//(number with desired type) `^^` (arithmetic operation)
+
+infix operator ^^ { precedence  100 }
+
+func ^^ <T:NumberConvertible, U:NumberConvertible>(var lhs: T, rhs: U) -> T{
     
     lhs = rhs.convert()
     let x:T = rhs.convert()
     return x;
 }
 
-enum OverflowIntTypes: IntNumberConvertible {
-    case int(Int)
-    case uint8(UInt8)
-    case int8(Int8)
-    case uint16(UInt16)
-    case int16(Int16)
-    case uint32(UInt32)
-    case int32(Int32)
-    case uint64(UInt64)
-    case int64(Int64)
-    case uint(UInt)
-}
-
-func checkForOverflow<T:IntNumberConvertible, U:NumberConvertible>(a:T, b:U) ->Bool {
-    let max  :Double = T.max.convert()
-    let test :Double = b.convert()
-    
-    if test > max{
-        return false
-        //assert(false, "Conversion Loss")
-    }
-    return true;
-}
-
-
-func ?= <T:IntNumberConvertible, U:NumberConvertible>(var lhs: T, rhs: U) -> T{
-    print("INTNUMBER")
-    
-    let max  :Double = T.max.convert()
-    let test :Double = rhs.convert()
-    
-    if test > max{
-        assert(false, "Conversion Loss")
-    }
-    
-        lhs = rhs.convert()
-    let x:T = rhs.convert()
-    return x;
-}
 
 
 
 
-
-//MARK:Equatable extension
-
+//MARK: - Equatable+Comparable overloading -
 
 
 public func == <T:NumberConvertible, U:NumberConvertible> (lhs: T, rhs: U) -> Bool{
@@ -236,3 +202,19 @@ public func < <T:NumberConvertible, U:NumberConvertible>  (lhs: T, rhs: U) -> Bo
 }
 
 
+//MARK: - Overflow Checking -
+
+/// wouldOverflowResult 
+/// result: **number with expected result type**  
+///      x: **arithmetic operation**
+/// `true` = overflows, `false` = safe operation
+
+func wouldOverflowResult<T:IntNumberConvertible, U:NumberConvertible>(result:T,_ x:U) ->Bool {
+    let max  :Double = T.max.convert()
+    let test :Double = x.convert()
+    
+    if test > max{
+        return true
+    }
+    return false;
+}
