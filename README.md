@@ -26,8 +26,8 @@ let znum2 = znum + znum1 * znum + num5
 or
 ```
 let znum3:Double = 5.i + 5.5.f * 2.i / 5.5.c 
-
 ```
+
 Cannot return to type other than Double by simply using = .
 
 ```
