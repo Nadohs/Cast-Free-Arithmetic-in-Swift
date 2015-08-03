@@ -2,7 +2,7 @@
 
 **Requires: Swift 2.0+**
 
-With Cast-Free Math you no longer need to cast to do arithmetic operations on mismatched number types.
+With *Cast-Free Math in Swift* you no longer need to cast to do arithmetic operations on mismatched number types.
 Although, removing the need for casting between number types removes some [type safety](https://realm.io/news/altconf-justin-spahr-summers-type-safety/ "Correct Behavior Through Type Safety") benefits.
 
 ###Single Letter Casting 
