@@ -35,7 +35,7 @@ Cannot return to type other than Double by simply using = .
 //This is not allowed...  :(
 ```
 
-#Cast-less Arithmetic Assigment to Non-Double
+###Cast-less Arithmetic Assigment to Non-Double
 ```
 var totalA:Int = 0
 ```
