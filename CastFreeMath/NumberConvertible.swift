@@ -107,11 +107,68 @@ extension UInt    : IntNumberConvertible {}
 
 //MARK: - Arithmetic overloading -
 
-public func + <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
-    let v: PreferredType = lhs.convert()
-    let w: PreferredType = rhs.convert()
-    return v+w
+public func ConvertNum<T:NumberConvertible, U>(input:U) -> T {
+    switch input {
+    case let x as CGFloat:
+        return T(x)
+    case let x as Float:
+        return T(x)
+    case let x as Int:
+        return T(x)
+    case let x as Double:
+        return T(x)
+    case let x as UInt8:
+        return T(x)
+    case let x as Int8:
+        return T(x)
+    case let x as UInt16:
+        return T(x)
+    case let x as Int16:
+        return T(x)
+    case let x as UInt32:
+        return T(x)
+    case let x as Int32:
+        return T(x)
+    case let x as UInt64:
+        return T(x)
+    case let x as Int64:
+        return T(x)
+    case let x as UInt:
+        return T(x)
+    default:
+        assert(false, "NumberConvertible convert cast failed!")
+        return T(0)
+    }
 }
+
+
+public func SumNums<T:NumberConvertible>( lhs:T,_ rhs:T) -> T {
+    switch (lhs,rhs) {
+    case let x as (CGFloat, CGFloat) :
+        return T(x.0 + x.1)
+    case let x as (Float, Float) :
+        return T(x.0 + x.1)
+    case let x as (Int, Int) :
+        return T(x.0 + x.1)
+    case let x as (Double, Double) :
+        return T(x.0 + x.1)
+    default:
+        assert(false, "NumberConvertible convert cast failed!")
+        return T(0)
+    }
+}
+
+
+
+public func + <T, U:NumberConvertible, V:NumberConvertible>(lhs: T, rhs: U) -> V {
+    
+    let v: V = ConvertNum(lhs)
+    let w: V = rhs.convert()
+    return SumNums(v, w)
+}
+
+
+//////
 
 public func - <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
     let v: PreferredType = lhs.convert()

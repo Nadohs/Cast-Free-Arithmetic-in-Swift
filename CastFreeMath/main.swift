@@ -14,12 +14,31 @@ Single letter property conversion to Float, CGFloat, Double, Int
 */
 
 
+
+
+extension NumberConvertible {
+    
+//    deinit{
+//        
+//    }
+    
+}
+
 let num:Double   =  12;
 let num2:Float   =  num.f;
 let num3:CGFloat =  num.c;
 let num4:Int     =  num.i;
 let num5:Double  = num2.d;
 
+let znum0:Float    =  num2 + num2 + num3 + num2 + num4 + num
+let znum01:CGFloat =  num2 + num2 + num3 + num2 + num4 + num
+let znum02:Double  =  num2 + num2 + num3 + num2 + num4 + num
+let znum03:Int     =  num2 + num2 + num3 + num2 + num4 + num
+
+print("znum0 = \(znum0)")
+print("znum1 = \(znum01)")
+print("znum2 = \(znum02)")
+print("znum3 = \(znum03)")
 
 let znum:Int = 5
 let znum1:Double = 7.0;
@@ -41,6 +60,7 @@ Cannot return to type other than Double by simply using = .
 #Cast-less Arithmetic Assigment to Non-Double
 */
 
+
 let val1:CGFloat = 5.0
 let val2:Double  = 3.0
 let val3:Int     = 1
@@ -53,7 +73,7 @@ Use `?=` for assignment to already previously defined number types (non-Double)
 
 */
 
-totalA ?= val1 + val2 * val3
+//totalA ?= val1 + val2 * val3
 
 /*:
 For values not previously assigned use the `^^` operator
@@ -62,7 +82,7 @@ For values not previously assigned use the `^^` operator
 
 */
 
-let totalB = Int() ^^ val1 + val2 * val3
+//let totalB = Int() ^^ val1 + val2 * val3
 
 /*:
 ###Equatable and Comparable Operators
@@ -129,6 +149,7 @@ wouldOverflowResult( **number with expected result type**  , **arithmetic operat
 `true` = overflows, `false` = safe operation
 
 */
+
 if wouldOverflowResult(Int(), Int(100000) * Int64(100000)){
     print("would overflow")
 }else{
