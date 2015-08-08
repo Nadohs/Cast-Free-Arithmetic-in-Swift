@@ -107,7 +107,7 @@ extension UInt    : IntNumberConvertible {}
 
 //MARK: - Arithmetic overloading -
 
-public func ConvertNum<T:NumberConvertible, U>(input:U) -> T {
+private func ConvertNum<T:NumberConvertible, U>(input:U) -> T {
     switch input {
     case let x as CGFloat:
         return T(x)
@@ -117,24 +117,6 @@ public func ConvertNum<T:NumberConvertible, U>(input:U) -> T {
         return T(x)
     case let x as Double:
         return T(x)
-    case let x as UInt8:
-        return T(x)
-    case let x as Int8:
-        return T(x)
-    case let x as UInt16:
-        return T(x)
-    case let x as Int16:
-        return T(x)
-    case let x as UInt32:
-        return T(x)
-    case let x as Int32:
-        return T(x)
-    case let x as UInt64:
-        return T(x)
-    case let x as Int64:
-        return T(x)
-    case let x as UInt:
-        return T(x)
     default:
         assert(false, "NumberConvertible convert cast failed!")
         return T(0)
@@ -142,7 +124,7 @@ public func ConvertNum<T:NumberConvertible, U>(input:U) -> T {
 }
 
 
-public func SumNums<T:NumberConvertible>( lhs:T,_ rhs:T) -> T {
+private func SumNums<T:NumberConvertible>( lhs:T,_ rhs:T) -> T {
     switch (lhs,rhs) {
     case let x as (CGFloat, CGFloat) :
         return T(x.0 + x.1)
