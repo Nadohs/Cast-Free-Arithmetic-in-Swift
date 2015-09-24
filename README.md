@@ -1,9 +1,8 @@
-# Cast-Free Math in Swift
+# Cast-Free Arithmetic in Swift
 
-**Requires: Swift 2.0+**
+**Requires: Swift 2.0+** 
 
-With *Cast-Free Math in Swift* you no longer need to cast to do arithmetic operations on mismatched number types.
-Although, removing the need for casting between number types removes some [type safety](https://realm.io/news/altconf-justin-spahr-summers-type-safety/ "Correct Behavior Through Type Safety") benefits.
+With *Cast-Free Arithmetic in Swift* you no longer need to cast to do arithmetic operations on mismatched number types.
 
 ###Single Letter Casting 
 Single letter property conversion to Float, CGFloat, Double, Int
@@ -40,7 +39,7 @@ let znum2:CGFloat = znum + znum1 * znum + num5
 Add `+ 0` if compiler has warning on exactly two operators
 
 ```
-let totalA:val1 + val2 * val3
+let totalA:val1 + val2 * val3 + 0
 ```
 
 
