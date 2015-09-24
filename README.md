@@ -28,30 +28,21 @@ or
 let znum3:Double = 5.i + 5.5.f * 2.i / 5.5.c 
 ```
 
-Cannot return to type other than Double by simply using = .
+We can now also return to types other than Double automatically
 
 ```
-//let znum2:CGFloat = znum + znum1 * znum + num5
-//This is not allowed...  :(
+let znum2:CGFloat = znum + znum1 * znum + num5
 ```
 
-###Cast-less Arithmetic Assigment to Non-Double
-```
-var totalA:Int = 0
-```
+###Cast-less Arithmetic Compiler Complaints 
 
-Use `?=` for assignment to already previously defined number types (non-Double)
+
+Add `+ 0` if compiler has warning on exactly two operators
 
 ```
-totalA ?= val1 + val2 * val3
+let totalA:val1 + val2 * val3
 ```
-For values not previously assigned use the `^^` operator
 
-(number with desired type) `^^` (arithmetic operation)
-
-```
-let totalB = Int() ^^ val1 + val2 * val3
-```
 
 ###Equatable and Comparable Operators
 
@@ -85,59 +76,3 @@ if val3 < val4{
 }
 
 `````
-
-###Overflow
-If you have any concerns about overflow then you should probably just be casting your types instead.
-
-```
-var resA:Int   = 0
-var resB:Int64 = 0
-```
-
-Our arithmetic operations do not have the same level of safety as what's in the standard library.  For instance the following line gives us an overflow compiler time error.
-
-```
-//resA = Int(1000000000000000000) * Int(1000000000000000000)
-```
-
-While `?=` and `^^` do not give such a warning and will instead throw an exception runtime
-
-```
-resA ?= Int(1000000000000000000) * Int64(1000000000000000000)
-```
-
-Let's check if our arithmetic operation will overflow before assigning the value
-
-   wouldOverflowResult( **number with expected result type**  , **arithmetic operation** ) -> Bool
-   
-   `true` = overflows, `false` = safe operation
-   
-```
-if wouldOverflowResult(Int(), Int(100000) * Int64(100000)){
-    print("would overflow")
-}else{
-    resA ?= Int(100000) * Int64(100000)
-}
-```
-NOTE: `wouldOverflowResult` currently only works for Integer result types
-
-```
-if wouldOverflowResult(Int(), Int(1000000000000000000) * Int64(1000000000000000000)){
-    print("would overflow")
-}else{
-    resA ?= Int(1000000000000000000) * Int64(1000000000000000000)
-}
-
-
-if wouldOverflowResult(Int(), Double.infinity){
-    print("would overflow")
-}else{
-    resA ?= Double.infinity
-}
-
-```
-
-
-Also want to say thanks to Matt Cheok and the Apple engineers that helped me out with this project during WWDC. 
-
-
