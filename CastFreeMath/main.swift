@@ -24,16 +24,28 @@ extension NumberConvertible {
     
 }
 
-let num:Double   =  12;
-let num2:Float   =  num.f;
-let num3:CGFloat =  num.c;
-let num4:Int     =  num.i;
-let num5:Double  = num2.d;
+var w:Double  = 1
+var x:Int     = 5
+var y:CGFloat = 10
+var z:Float   = 15
 
-let znum0:Float    =  num2 + num2 + num3 + num2 + num4 + num
+let m:Float  = y + x + w + 0
+let n:Int    = y + z + x
+
+let num:Double   =  12.5;
+let num2:Float   =  12;
+let num3:CGFloat =  12;
+let num4:Int     =  12;
+let num5:Double  =  12;
+
+let znum0:Float    =  num2 + num3 + num2 + num4 + num.f + 0
 let znum01:CGFloat =  num2 + num2 + num3 + num2 + num4 + num
 let znum02:Double  =  num2 + num2 + num3 + num2 + num4 + num
 let znum03:Int     =  num2 + num2 + num3 + num2 + num4 + num
+let znum04:Int     =  num2 + num2 + num3 + num2 + num4
+let znum05:Int     =  num2 + num2 + num3 + num2
+let znum06:Int     =  num2 + num2 + num3
+let znum07:Int     =  num2 + num3 + num2 + 0
 
 print("znum0 = \(znum0)")
 print("znum1 = \(znum01)")
@@ -50,6 +62,7 @@ Default return type for mismatched number types in Double
 
 let znum2:Double = znum + znum1 * znum + num5
 let znum3:Double = 5.i + 5.5.f * 2.i / 5.5.c
+
 
 /*:
 Cannot return to type other than Double by simply using = .
@@ -150,26 +163,26 @@ wouldOverflowResult( **number with expected result type**  , **arithmetic operat
 
 */
 
-if wouldOverflowResult(Int(), Int(100000) * Int64(100000)){
-    print("would overflow")
-}else{
-    resA ?= Int(100000) * Int64(100000)
-}
-/*:
-NOTE: `wouldOverflowResult` currently only works for Integer result types
-
-*/
-if wouldOverflowResult(Int(), Int(1000000000000000000) * Int64(1000000000000000000)){
-    print("would overflow")
-}else{
-    resA ?= Int(1000000000000000000) * Int64(1000000000000000000)
-}
-
-
-if wouldOverflowResult(Int(), Double.infinity){
-    print("would overflow")
-}else{
-    resA ?= Double.infinity
-}
+//if wouldOverflowResult(Int(), Int(100000) * Int64(100000)){
+//    print("would overflow")
+//}else{
+//    resA ?= Int(100000) * Int64(100000)
+//}
+///*:
+//NOTE: `wouldOverflowResult` currently only works for Integer result types
+//
+//*/
+//if wouldOverflowResult(Int(), Int(1000000000000000000) * Int64(1000000000000000000)){
+//    print("would overflow")
+//}else{
+//    resA ?= Int(1000000000000000000) * Int64(1000000000000000000)
+//}
 
 
+//if wouldOverflowResult(Int(), Double.infinity){
+//    print("would overflow")
+//}else{
+//    resA ?= Double.infinity
+//}
+//
+//

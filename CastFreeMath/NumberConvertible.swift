@@ -105,79 +105,42 @@ extension UInt    : IntNumberConvertible {}
 
 
 
-//MARK: - Arithmetic overloading -
-
-private func ConvertNum<T:NumberConvertible, U>(input:U) -> T {
-    switch input {
-    case let x as CGFloat:
-        return T(x)
-    case let x as Float:
-        return T(x)
-    case let x as Int:
-        return T(x)
-    case let x as Double:
-        return T(x)
-    default:
-        assert(false, "NumberConvertible convert cast failed!")
-        return T(0)
-    }
-}
-
-
-private func SumNums<T:NumberConvertible>( lhs:T,_ rhs:T) -> T {
-    switch (lhs,rhs) {
-    case let x as (CGFloat, CGFloat) :
-        return T(x.0 + x.1)
-    case let x as (Float, Float) :
-        return T(x.0 + x.1)
-    case let x as (Int, Int) :
-        return T(x.0 + x.1)
-    case let x as (Double, Double) :
-        return T(x.0 + x.1)
-    default:
-        assert(false, "NumberConvertible convert cast failed!")
-        return T(0)
-    }
-}
-
-
-
-public func + <T, U:NumberConvertible, V:NumberConvertible>(lhs: T, rhs: U) -> V {
-    
-    let v: V = ConvertNum(lhs)
-    let w: V = rhs.convert()
-    return SumNums(v, w)
-}
-
-
-//////
-
-public func - <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
-    let v: PreferredType = lhs.convert()
-    let w: PreferredType = rhs.convert()
-    return v-w
-}
-
-public func / <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
-    let v: PreferredType = lhs.convert()
-    let w: PreferredType = rhs.convert()
-    return v/w
-}
-
-public func * <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
-    let v: PreferredType = lhs.convert()
-    let w: PreferredType = rhs.convert()
-    return v*w
-}
-
-public func % <T:NumberConvertible, U:NumberConvertible>(lhs: T, rhs: U) -> PreferredType {
-    let v: PreferredType = lhs.convert()
-    let w: PreferredType = rhs.convert()
-    return v%w
-}
-
 
 //MARK: - Assignment overloading -
+
+
+extension NumberConvertible {
+    
+    private typealias CombineType = (PreferredType,PreferredType) -> PreferredType
+    
+    private func operate<T:NumberConvertible,V:NumberConvertible>(b:T, combine:CombineType) -> V{
+        let x:PreferredType = self.convert()
+        let y:PreferredType = b.convert()
+        return combine(x,y).convert()
+    }
+}
+
+
+public func + <T:NumberConvertible, U:NumberConvertible,V:NumberConvertible>(lhs: T, rhs: U) -> V {
+    return lhs.operate(rhs, combine: + )
+}
+
+public func - <T:NumberConvertible, U:NumberConvertible,V:NumberConvertible>(lhs: T, rhs: U) -> V {
+    return lhs.operate(rhs, combine: - )
+}
+
+public func * <T:NumberConvertible, U:NumberConvertible,V:NumberConvertible>(lhs: T, rhs: U) -> V {
+    return lhs.operate(rhs, combine: * )
+}
+
+public func / <T:NumberConvertible, U:NumberConvertible,V:NumberConvertible>(lhs: T, rhs: U) -> V {
+    return lhs.operate(rhs, combine: / )
+}
+
+public func % <T:NumberConvertible, U:NumberConvertible,V:NumberConvertible>(lhs: T, rhs: U) -> V {
+    return lhs.operate(rhs, combine: % )
+}
+//MARK: -
 
 
 /// Use `?=` for assignment to already previously defined number types (non-`Double`)
@@ -247,6 +210,7 @@ public func < <T:NumberConvertible, U:NumberConvertible>  (lhs: T, rhs: U) -> Bo
 /// result: **number with expected result type**  
 ///      x: **arithmetic operation**
 /// `true` = overflows, `false` = safe operation
+
 
 func wouldOverflowResult<T:IntNumberConvertible, U:NumberConvertible>(result:T,_ x:U) ->Bool {
     let max  :Double = T.max.convert()

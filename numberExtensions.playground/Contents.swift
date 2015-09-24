@@ -48,20 +48,13 @@ var totalA:Int = 0
 
 /*:
 
-Use `?=` for assignment to already previously defined number types (non-Double)
+Add `+ 0` if compiler has warning on exactly two operators
 
 */
 
-totalA ?= val1 + val2 * val3
 
-/*:
-For values not previously assigned use the `^^` operator
+let totalB:Int = val1 + val2 * val3 + 0
 
-(number with desired type) `^^` (arithmetic operation)
-
-*/
-
-let totalB = Int() ^^ val1 + val2 * val3
 
 /*:
 ###Equatable and Comparable Operators
@@ -130,26 +123,26 @@ wouldOverflowResult( **number with expected result type**  , **arithmetic operat
 `true` = overflows, `false` = safe operation
 
 */
-if wouldOverflowResult(Int(), Int(100000) * Int64(100000)){
-print("would overflow")
-}else{
-resA ?= Int(100000) * Int64(100000)
-}
-/*:
-NOTE: `wouldOverflowResult` currently only works for Integer result types
-
-*/
-if wouldOverflowResult(Int(), Int(1000000000000000000) * Int64(1000000000000000000)){
-print("would overflow")
-}else{
-resA ?= Int(1000000000000000000) * Int64(1000000000000000000)
-}
-
-
-if wouldOverflowResult(Int(), Double.infinity){
-print("would overflow")
-}else{
-resA ?= Double.infinity
-}
-
-
+//if wouldOverflowResult(Int(), Int(100000) * Int64(100000)){
+//print("would overflow")
+//}else{
+//resA ?= Int(100000) * Int64(100000)
+//}
+///*:
+//NOTE: `wouldOverflowResult` currently only works for Integer result types
+//
+//*/
+//if wouldOverflowResult(Int(), Int(1000000000000000000) * Int64(1000000000000000000)){
+//print("would overflow")
+//}else{
+//resA ?= Int(1000000000000000000) * Int64(1000000000000000000)
+//}
+//
+//
+//if wouldOverflowResult(Int(), Double.infinity){
+//print("would overflow")
+//}else{
+//resA ?= Double.infinity
+//}
+//
+//
