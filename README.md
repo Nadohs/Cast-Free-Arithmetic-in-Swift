@@ -39,7 +39,7 @@ let znum2:CGFloat = znum + znum1 * znum + num5
 Add `+ 0` if compiler has warning on exactly two operators
 
 ```
-let totalA:val1 + val2 * val3 + 0
+let totalA:Float = val1 + val2 * val3 + 0
 ```
 
 
